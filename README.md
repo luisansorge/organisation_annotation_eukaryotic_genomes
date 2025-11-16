@@ -166,15 +166,25 @@ This project contains scripts for the annotation and comparative genomics of *Ar
 
 ---
 
-## Key Technologies and Tools
+## Dependencies
 
-- **Assembly**: Hifiasm
-- **TE Annotation**: EDTA, TEsorter, RepeatMasker
-- **Gene Prediction**: MAKER, Augustus, GeneMark
-- **Functional Annotation**: InterProScan, BLASTP
-- **Quality Assessment**: BUSCO, AGAT
-- **Comparative Genomics**: GENESPACE, OrthoFinder, MCScanX, DIAMOND
-- **Visualization**: R (ggplot2, circlize), custom scripts
-- **Infrastructure**: SLURM cluster, Apptainer/Singularity containers
+### Tools
 
+- **TE Annotation**: EDTA (v2.2), TEsorter (v1.3.0), SeqKit (v2.6.1), BioPerl (v1.7.8)
+- **Gene Prediction**: MAKER (v3.01.03), OpenMPI (v4.1.1), Augustus (v3.4.0)
+- **Functional Annotation**: InterProScan (v5.70-102.0), BLAST+ (v2.15.0)
+- **Quality Assessment**: BUSCO (v5.4.2), AGAT (v1.5.1)
+- **Comparative Genomics**: GENESPACE
+
+### R v(4.4.3) Packages
+
+- tidyverse
+- data.table
+- cowplot
+- circlize
+- ComplexHeatmap
+- dplyr
+- reshape2
+- GENESPACE
+  
 ---
