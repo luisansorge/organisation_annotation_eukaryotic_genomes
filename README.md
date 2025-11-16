@@ -66,7 +66,7 @@ This project contains scripts for the annotation and comparative genomics of *Ar
 
 #### 2.2 Gene Prediction
 **`06-run_MAKER.sh`** - MAKER Annotation Pipeline
-- Integrates Ab initio predictions, RNA-seq evidence and Protein homology leading to consensus gene models
+- Integrates ab initio predictions, RNA-seq evidence and Protein homology leading to consensus gene models
 - Masks transposable elements using EDTA library
 - Predicts gene structures with exon-intron boundaries and detects alternative splice variants
 - Outputs per-contig GFF3, protein, and transcript files 
@@ -74,7 +74,7 @@ This project contains scripts for the annotation and comparative genomics of *Ar
 #### 2.3 Output Consolidation
 **`07-merge_MAKER_outputs.sh`** - Merge Annotations
 - Consolidates per-contig outputs into single genome-wide files
-- Creates merged GFF3 (with/without sequences) and FASTA files
+- Creates merged GFF3 (with and without sequences) and FASTA files
 
 ---
 
@@ -83,32 +83,28 @@ This project contains scripts for the annotation and comparative genomics of *Ar
 #### 3.1 Gene Renaming
 **`08-rename_maker_genes.sh`** - Systematic ID Assignment
 - Replaces MAKER auto-generated IDs with clean, accession-specific identifiers
-- Format: `Abd-0_0000001-RA` (prefix + number + isoform)
-- Maintains consistency across GFF3, proteins, and transcripts
+- Format: `Abd-0_0000001-RA` (accession prefix + number + isoform)
+- Creates consistent gene identifiers across GFF3, proteins, and transcripts 
 
 #### 3.2 Functional Annotation
 **`09-run_interproscan.sh`** - Domain and GO Term Assignment
-- Scans proteins for Pfam domains
-- Assigns Gene Ontology (GO) terms
-- Links to InterPro entries
-- Provides functional characterization
+- Scans proteins for conserved Pfam domains
+- Assigns Gene Ontology (GO) terms for biological function
+- Links to InterPro entries that integrate multiple databases, with unified protein signature database IDs 
+- Provides functional characterisation of predicted genes, identifying protein families and biological roles
 
 #### 3.3 Quality Filtering
 **`10-filter_and_refine_annotations.sh`** - Evidence-Based Filtering
-- Integrates InterProScan results into GFF3
+- Updates GFF3 with InterProScan results (Pfam domains, GO terms, InterPro IDs) 
 - Calculates AED (Annotation Edit Distance) scores
-  - AED = 0.0: Perfect evidence support
-  - AED = 1.0: No evidence (ab initio only)
-- Filters genes requiring either:
-  - AED < 1.0 (evidence support), OR
-  - Pfam domain present (functional annotation)
-- Extracts high-confidence gene models
+- Cleans GFF3 structure by removing auxiliary features, retaining only gene-structure elements (gene, mRNA, exon, CDS, UTRs)
+- Produces final gene annotations by removing low-confidence predictions and ensuring genes have either empirical evidence support or functional characterisation  
 
 #### 3.4 Isoform Selection
 **`11-extract_longest_isoforms.sh`** - Longest Isoform per Gene
 - Removes alternative splice variants
-- Retains longest protein/transcript per gene
-- Required for BUSCO and comparative genomics
+- Retains longest protein and transcript per gene
+- Required for BUSCO and comparative genomics analyses
 
 ---
 
