@@ -130,6 +130,8 @@ This project contains scripts for the annotation and comparative genomics of *Ar
 
 ### 5. Functional Annotation via Homology
 
+#### 5.1 Identifying Homologs with BLASTP
+
 **`14-run_BLASTP.sh`** - BLAST Searches
 - **UniProt BLASTP**: Transfers functional annotations from curated plant proteins
 - **TAIR10 BLASTP**: Identifies *Arabidopsis* orthologs from reference proteins
