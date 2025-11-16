@@ -2,34 +2,14 @@
 
 ## Project Description
 
-This project implements a comprehensive computational workflow for the assembly, annotation, and comparative analysis of eukaryotic genomes. Using *Arabidopsis thaliana* accessions as a model system, we perform de novo genome assembly from HiFi sequencing data, followed by systematic annotation of transposable elements (TEs) and protein-coding genes. The pipeline integrates multiple evidence sources including RNA-seq data, protein homology, and ab initio predictions to produce high-quality genome annotations. Finally, we conduct comparative genomics analysis to identify core, accessory, and unique genes across multiple accessions, revealing insights into genome evolution and structural variation.
+This project contains scripts for the annotation and comparative genomics of *Arabidopsis thaliana* accessions. A systematic annotation of transposable elements (TEs) and protein-coding genes is performed, integrating RNA-seq data, protein homology and ab initio predictions to produce genome annotations. Additionlly, comparative genomics analysis was conducted to identify orthogroups and syntenic regions across multiple accessions, revealing insights into genome evolution and structural variation. 
 
-## Goals
-
-- **Genome Assembly**: Generate high-quality genome assemblies from HiFi sequencing reads
-- **TE Annotation**: Identify and classify transposable elements to understand genome dynamics and evolutionary history
-- **Gene Annotation**: Predict protein-coding genes using multiple lines of evidence (RNA-seq, protein homology, ab initio predictions)
-- **Functional Annotation**: Assign putative functions to predicted genes using domain analysis and homology searches
-- **Quality Assessment**: Evaluate annotation completeness and accuracy using standardized metrics
-- **Comparative Genomics**: Identify orthogroups and syntenic regions across multiple genome accessions to define the pangenome structure
-
-## Input Data / Datasets
+## Datasets
 
 ### Primary Data
-- **HiFi Sequencing Reads**: High-fidelity long reads for genome assembly
-- **RNA-seq Data**: Paired-end Illumina reads for gene expression evidence
-- **Reference Genome**: *Arabidopsis thaliana* TAIR10 for comparison and validation
-
-### Reference Databases
-- **TAIR10 CDS**: Coding sequences for masking during TE annotation
-- **TAIR10 Proteins**: Reference proteins for homology-based gene prediction
-- **UniProt Viridiplantae**: Curated plant proteins for functional annotation
-- **Pfam**: Protein domain database (via InterProScan)
-- **BUSCO Brassicales**: Conserved single-copy orthologs for quality assessment (~4,596 genes)
-- **REXdb-plant**: Plant-specific TE protein domain database for TEsorter
-
-### Additional Accessions
-- Multiple *Arabidopsis* accessions from Lian et al. dataset for comparative genomics (Etna-2, Ice-1, Taz-0)
+- **Assembly Data**: PacBio HiFi long reads fromo accession Abd-0 assembled with Hifiasm
+- **RNA-seq Data**: Paired-end Illumina short reads for gene expression evidence from accession Sha assembled with Trinity 
+- **Reference Genome**: *Arabidopsis thaliana* TAIR10
 
 ---
 
