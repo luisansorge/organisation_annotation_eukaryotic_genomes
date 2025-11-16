@@ -51,7 +51,7 @@ This project contains scripts for the annotation and comparative genomics of *Ar
 - Enables detailed clade abundance comparison
 
 #### 1.3 TE Age Estimation
-**`04-run_TEsorter_dating.sh`** / **`04a-parseRM.pl`** - TE Divergence Analysis
+**`04-run_TEdating.sh`** / **`04a-parseRM.pl`** - TE Divergence Analysis
 - Parses RepeatMasker output to calculate corrected divergence for each TE copy from its consensus sequence
 - Enables TE insertion age estimation by quantifying how much each TE copy has diverged from its original sequence. 
 
@@ -85,7 +85,7 @@ This project contains scripts for the annotation and comparative genomics of *Ar
 ### 3. Annotation Refinement and Quality Control
 
 #### 3.1 Gene Renaming
-**`08-rename_maker_genes.sh`** - Systematic ID Assignment
+**`08-map_maker_gene_ids.sh`** - Systematic ID Assignment
 - Replaces MAKER auto-generated IDs with clean, accession-specific identifiers
 - Format: `Abd-0_0000001-RA` (accession prefix + number + isoform)
 - Creates consistent gene identifiers across GFF3, proteins, and transcripts 
@@ -121,7 +121,7 @@ This project contains scripts for the annotation and comparative genomics of *Ar
 - Runs on both proteins and transcripts
 
 #### 4.2 Annotation Statistics
-**`13-generate_AGAT_statistics.sh`** - Comprehensive Summary Metrics
+**`13-run_AGAT.sh`** - Comprehensive Summary Metrics
 - Gene, transcript, exon counts and lengths
 - Distribution statistics and Structural feature analysis
 - Provides detailed annotation statistics for quality assessment and comparison across genome accessions 
@@ -143,7 +143,7 @@ This project contains scripts for the annotation and comparative genomics of *Ar
 ### 6. Comparative Genomics
 
 #### 6.1 Input Preparation
-**`15-prepare_genespace_inputs.sh`** - Format Files for GENESPACE
+**`15-setup_genespace.sh`** - Format Files for GENESPACE
 - Converts annotations to BED format
 - Extracts peptide sequences with clean IDs
 - Processes multiple accessions (Abd-0, Etna-2, Ice-1, Taz-0)
