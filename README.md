@@ -7,8 +7,8 @@ This project contains scripts for the annotation and comparative genomics of *Ar
 ## Datasets
 
 ### Input Data
-- **Assembly Data**: PacBio HiFi long reads fromo accession Abd-0 assembled with Hifiasm
-- **RNA-seq Data**: Paired-end Illumina short reads for gene expression evidence from accession Sha assembled with Trinity 
+- **Assembly Data**: PacBio HiFi long reads fromo accession Abd-0 assembled with Hifiasm (v0.25.0)
+- **RNA-seq Data**: Paired-end Illumina short reads for gene expression evidence from accession Sha assembled with Trinity (v2.15.1)
 - **Reference Genome**: *Arabidopsis thaliana* TAIR10
 
 ### Citations
