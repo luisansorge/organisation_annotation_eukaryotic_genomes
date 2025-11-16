@@ -130,7 +130,7 @@ This project contains scripts for the annotation and comparative genomics of *Ar
 
 ### 5. Functional Annotation via Homology
 
-**`14-blastp_functional_annotation.sh`** - BLAST Searches
+**`14-run_BLASTP.sh`** - BLAST Searches
 - **UniProt BLASTP**: Transfers functional annotations from curated plant proteins
 - **TAIR10 BLASTP**: Identifies *Arabidopsis* orthologs from reference proteins
 - Integrates gene names and descriptions into GFF3 and FASTA headers
@@ -142,10 +142,10 @@ This project contains scripts for the annotation and comparative genomics of *Ar
 
 #### 6.1 Input Preparation
 **`15-prepare_genespace_inputs.sh`** - Format Files for GENESPACE
-- Converts annotations to BED format (0-based coordinates)
+- Converts annotations to BED format
 - Extracts peptide sequences with clean IDs
-- Processes multiple accessions (Abd-0, TAIR10, Etna-2, Ice-1, Taz-0)
-- Critical: Replaces problematic characters (`:`, `.`, `-`) with `_`
+- Processes multiple accessions (Abd-0, Etna-2, Ice-1, Taz-0)
+- Replaces problematic characters (`:`, `.`, `-`) with `_`
 
 #### 6.2 Orthology and Synteny Analysis
 **`16-run_genespace.sh`** / **`16a_genespace.R`** - GENESPACE Pipeline
@@ -158,7 +158,9 @@ This project contains scripts for the annotation and comparative genomics of *Ar
   - **Unique genes**: Present in one accession (lineage-specific)
 - Generates dotplots (pairwise synteny) and riparian plots (multi-genome)
 
-**Outputs**: Orthogroup assignments, syntenic coordinates, visualization plots, pangenome matrix
+**`16b-process_pangenome.sh`** - Pangenome Frequency Plot
+- Reads `pangenome_matrix.rds` output from GENESPACE containing orthogroup assignments
+- Quantifies pangenome architecture, conserved vs. variable gene content, assess genome-specific innovations and losses, and compare gene diversity across accessions
 
 ---
 
