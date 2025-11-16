@@ -55,6 +55,10 @@ This project contains scripts for the annotation and comparative genomics of *Ar
 - Parses RepeatMasker output to calculate corrected divergence for each TE copy from its consensus sequence
 - Enables TE insertion age estimation by quantifying how much each TE copy has diverged from its original sequence. 
 
+**`04b-plot_div.R`** - TE Landscape Divergence
+- Visualise temporal dynamics of TE accumulation
+- Enabling comparison of recent vs. ancient TE expansion between Copia, Gypsy, and DNA transposon superfamilies
+
 ---
 
 ### 2. Gene Annotation with MAKER
@@ -113,16 +117,14 @@ This project contains scripts for the annotation and comparative genomics of *Ar
 #### 4.1 BUSCO Analysis
 **`12-run_BUSCO.sh`** / **`12a-BUSCO_plot.sh`** - Annotation Completeness
 - Searches for conserved single-copy orthologs (Brassicales dataset: ~4,596 BUSCOs)
-- Metrics: Complete, Duplicated, Fragmented, Missing
+- Metrics: complete, duplicated, fragmented, missing BUSCOs
 - Runs on both proteins and transcripts
-- Benchmark: >90-95% complete for high-quality annotations
 
 #### 4.2 Annotation Statistics
-**`13-generate_AGAT_statistics.sh`** - Comprehensive Metrics
-- Gene/transcript/exon counts and lengths
-- Distribution statistics (mean, median, min, max)
-- Structural feature analysis (introns, UTRs, CDS)
-- Enables cross-accession comparisons
+**`13-generate_AGAT_statistics.sh`** - Comprehensive Summary Metrics
+- Gene, transcript, exon counts and lengths
+- Distribution statistics and Structural feature analysis
+- Provides detailed annotation statistics for quality assessment and comparison across genome accessions 
 
 ---
 
@@ -130,7 +132,7 @@ This project contains scripts for the annotation and comparative genomics of *Ar
 
 **`14-blastp_functional_annotation.sh`** - BLAST Searches
 - **UniProt BLASTP**: Transfers functional annotations from curated plant proteins
-- **TAIR10 BLASTP**: Identifies *Arabidopsis* orthologs
+- **TAIR10 BLASTP**: Identifies *Arabidopsis* orthologs from reference proteins
 - Integrates gene names and descriptions into GFF3 and FASTA headers
 - Assesses annotation quality (proportion of genes with known homologs)
 
