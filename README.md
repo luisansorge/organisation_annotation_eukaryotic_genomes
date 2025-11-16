@@ -61,27 +61,20 @@ This project contains scripts for the annotation and comparative genomics of *Ar
 
 #### 2.1 MAKER Setup
 **`05-create_control_files.sh`** - Generate Control Files
-- Creates MAKER configuration templates (`maker_opts.ctl`, `maker_bopts.ctl`, etc.)
-- Must be manually edited to specify genome, transcriptome, protein databases, and TE library
+- Creates MAKER configuration templates (`maker_opts.ctl`, `maker_bopts.ctl`, `maker_evm.ctl`, `maker_exe.ctl`)
+- Must be manually edited to specify genome, transcriptome, protein databases, TE library etc.
 
 #### 2.2 Gene Prediction
 **`06-run_MAKER.sh`** - MAKER Annotation Pipeline
-- Integrates three evidence types:
-  - **Ab initio predictions**: Augustus (pattern-based gene finding)
-  - **RNA-seq evidence**: Transcriptome alignment
-  - **Protein homology**: TAIR10 and UniProt alignments
+- Integrates Ab initio predictions, RNA-seq evidence and Protein homology leading to consensus gene models
 - Masks transposable elements using EDTA library
-- Predicts gene structures with exon-intron boundaries
-- Detects alternative splice variants
-- Runs with MPI parallelization (50 cores)
-
-**Outputs**: Per-contig GFF3, protein, and transcript files
+- Predicts gene structures with exon-intron boundaries and detects alternative splice variants
+- Outputs per-contig GFF3, protein, and transcript files 
 
 #### 2.3 Output Consolidation
 **`07-merge_MAKER_outputs.sh`** - Merge Annotations
 - Consolidates per-contig outputs into single genome-wide files
 - Creates merged GFF3 (with/without sequences) and FASTA files
-- Essential step before downstream processing
 
 ---
 
