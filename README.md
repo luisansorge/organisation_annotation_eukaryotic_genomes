@@ -29,30 +29,31 @@ This project contains scripts for the annotation and comparative genomics of *Ar
 - Performs whole-genome TE annotation producing GFF3 files
 - Generates summary statistics and RepeatMasker output
 
-**Outputs**: TE library, genome-wide annotation (GFF3), intact TE annotations, summary statistics
-
 #### 1.2 Clade-Level Classification
 **`02-run_TEsorter.sh`** - TEsorter on Raw LTR-RTs
 - Classifies full-length LTR retrotransposons into specific clades
 - Uses REXdb plant database for protein domain analysis
-- Provides Class → Order → Superfamily → Clade hierarchy
+- Provides Class, Order, Superfamily, Clade hierarchy
 
 **`02a-full_length_LTRs_identity.R`** - LTR Identity Analysis
-- Visualizes LTR identity distributions by clade (Copia and Gypsy)
-- High identity (99-100%) = recent insertions; Low identity (80-90%) = ancient insertions
-- Generates publication-ready plots
+- Visualises LTR identity distributions by clade (Copia and Gypsy)
+- Shows age distributions to determing recent and ancient insertions
 
+**`02b-annotation_circlize.R`** - TE and Gene Density Visualisation
+- Creates circular genome plots showing TE and gene distributions across scaffolds
+- Visualises density of different TE superfamilies as colored tracks
+- Generates clade-specific plots for centromeric TEs (Athila and CRM clades)
+- Enables identification of TE-rich vs. gene-rich genomic regions
+  
 **`03-run_TEsorter_superfamilies.sh`** - Superfamily-Specific Classification
 - Extracts Copia and Gypsy sequences separately from TE library
 - Runs TEsorter independently on each superfamily
 - Enables detailed clade abundance comparison
 
 #### 1.3 TE Age Estimation
-**`04-run_TEsorter_dating.sh`** / **`05a-parseRM.pl`** - TE Divergence Analysis
-- Parses RepeatMasker output to calculate corrected divergence
-- Accounts for CpG hypermutation
-- Enables estimation of TE insertion age (T = K/2r)
-- Low divergence = young TEs; High divergence = old TEs
+**`04-run_TEsorter_dating.sh`** / **`04a-parseRM.pl`** - TE Divergence Analysis
+- Parses RepeatMasker output to calculate corrected divergence for each TE copy from its consensus sequence
+- Enables TE insertion age estimation by quantifying how much each TE copy has diverged from its original sequence. 
 
 ---
 
