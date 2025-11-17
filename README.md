@@ -160,7 +160,7 @@ This project contains scripts for the annotation and comparative genomics of *Ar
   - **Unique genes**: Present in one accession (lineage-specific)
 - Generates dotplots (pairwise synteny) and riparian plots (multi-genome)
 
-**`16b-process_pangenome.sh`** - Pangenome Frequency Plot
+**`16b-process_pangenome.R`** - Pangenome Frequency Plot
 - Reads `pangenome_matrix.rds` output from GENESPACE containing orthogroup assignments
 - Quantifies pangenome architecture, conserved vs. variable gene content, assess genome-specific innovations and losses, and compare gene diversity across accessions
 
