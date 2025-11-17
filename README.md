@@ -37,7 +37,7 @@ This project contains scripts for the annotation and comparative genomics of *Ar
 
 **`02a-full_length_LTRs_identity.R`** - LTR Identity Analysis
 - Visualises LTR identity distributions by clade (Copia and Gypsy)
-- Shows age distributions to determing recent and ancient insertions
+- Shows age distributions to determine recent and ancient insertions
 
 **`02b-annotation_circlize.R`** - TE and Gene Density Visualisation
 - Creates circular genome plots showing TE and gene distributions across scaffolds
