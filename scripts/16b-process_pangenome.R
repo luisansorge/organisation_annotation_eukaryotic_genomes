@@ -1,5 +1,6 @@
 library(tidyverse)
 library(readr)
+library(ggplot2)
 install.packages("readr")
 
 # -----------------
@@ -247,3 +248,88 @@ freq_summary <- freq_data %>%
   select(n_present, label, Orthogroups, Genes)
 
 print(freq_summary)
+
+# -----------------
+# 6) Stacked barplot: Gene composition by accession
+# -----------------
+
+# Prepare data for stacked barplot
+gene_composition <- gene_counts_per_genome %>%
+  select(genome, gene_core, gene_accessory, gene_specific) %>%
+  pivot_longer(
+    cols = c(gene_core, gene_accessory, gene_specific),
+    names_to = "category",
+    values_to = "count"
+  ) %>%
+  mutate(
+    category = factor(
+      category,
+      levels = c("gene_core", "gene_accessory", "gene_specific"),
+      labels = c("Core", "Accessory", "Species-specific")
+    )
+  )
+
+# Create stacked barplot
+ggplot(gene_composition, aes(x = genome, y = count, fill = category)) +
+  geom_col(alpha = 0.8, width = 0.7) +
+  scale_y_continuous(labels = scales::comma, expand = c(0, 0)) +
+  scale_fill_manual(
+    values = c(
+      "Core" = "#0072B2",
+      "Accessory" = "#E69F00",
+      "Species-specific" = "#D55E00"
+    )
+  ) +
+  labs(
+    x = "Accession",
+    y = "Number of genes",
+    fill = "Gene category",
+    title = "Gene composition by accession",
+    subtitle = "Distribution of core, accessory, and species-specific genes"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    legend.position = "top",
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.title = element_text(face = "bold"),
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+
+ggsave(file.path(wd, "gene_composition_by_accession.pdf"), width = 10, height = 6)
+
+# Add percentages as text labels on the bars
+ggplot(gene_composition, aes(x = genome, y = count, fill = category)) +
+  geom_col(alpha = 0.8, width = 0.7) +
+  geom_text(
+    data = gene_counts_per_genome,
+    aes(x = genome, y = gene_total, label = paste0(round(percent_core, 1), "%"), fill = NULL),
+    vjust = -0.5,
+    size = 3,
+    fontface = "bold"
+  ) +
+  scale_y_continuous(labels = scales::comma, expand = expansion(mult = c(0, 0.1))) +
+  scale_fill_manual(
+    values = c(
+      "Core" = "#0072B2",
+      "Accessory" = "#E69F00",
+      "Species-specific" = "#D55E00"
+    )
+  ) +
+  labs(
+    x = "Accession",
+    y = "Number of genes",
+    fill = "Gene category",
+    title = "Gene composition by accession",
+    subtitle = "Percentages show core gene proportion"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    legend.position = "top",
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.title = element_text(face = "bold"),
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+
+ggsave(file.path(wd, "gene_composition_with_percentages.pdf"), width = 10, height = 6)
