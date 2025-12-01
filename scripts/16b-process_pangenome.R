@@ -265,7 +265,7 @@ gene_composition <- gene_counts_per_genome %>%
     category = factor(
       category,
       levels = c("gene_core", "gene_accessory", "gene_specific"),
-      labels = c("Core", "Accessory", "Species-specific")
+      labels = c("Core", "Accessory", "Accession-specific")
     )
   )
 
@@ -277,7 +277,7 @@ ggplot(gene_composition, aes(x = genome, y = count, fill = category)) +
     values = c(
       "Core" = "#0072B2",
       "Accessory" = "#E69F00",
-      "Species-specific" = "#D55E00"
+      "Accession-specific" = "#D55E00"
     )
   ) +
   labs(
@@ -285,7 +285,7 @@ ggplot(gene_composition, aes(x = genome, y = count, fill = category)) +
     y = "Number of genes",
     fill = "Gene category",
     title = "Gene composition by accession",
-    subtitle = "Distribution of core, accessory, and species-specific genes"
+    subtitle = "Distribution of core, accessory, and accession-specific genes"
   ) +
   theme_minimal(base_size = 14) +
   theme(
@@ -313,7 +313,7 @@ ggplot(gene_composition, aes(x = genome, y = count, fill = category)) +
     values = c(
       "Core" = "#0072B2",
       "Accessory" = "#E69F00",
-      "Species-specific" = "#D55E00"
+      "Accession-specific" = "#D55E00"
     )
   ) +
   labs(
